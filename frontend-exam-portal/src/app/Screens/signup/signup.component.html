@@ -1,1 +1,57 @@
-<p>signup works!</p>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col" style="margin-top: 20px;">
+        <div class="text-center">
+            <!-- <img src="../../../assets/logo.png" alt=""> -->
+            <img src="assets/logo1.png" alt="Logo" width="120" class="mb-3">
+        </div>
+        <h4 class="text-center">Register</h4>
+        
+        <!-- {{user | json}} -->
+
+        <form (ngSubmit)="formSubmit()" #signupForm="ngForm">
+            <div class="container">
+                <!-- User Name -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>User Name</mat-label>
+                <input  matInput placeholder="Enter Here" [(ngModel)]="user.userName" name="userName">
+            </mat-form-field>
+            <!-- First Name -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input  matInput placeholder="Enter Here" [(ngModel)]="user.firstName" name="firstName">
+            </mat-form-field>
+            <!-- Last Name -->
+            <mat-form-field class="full-width" appearance="outline" >
+                <mat-label>Last Name</mat-label>
+                <input  matInput placeholder="Enter Here" [(ngModel)]="user.lastName" name="lastName">
+            </mat-form-field>
+            <!-- Password -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input  matInput placeholder="Enter Here" [(ngModel)]="user.password" name="password">
+            </mat-form-field>
+            <!-- Confirm Password
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input  matInput placeholder="Enter Here" [(ngModel)]="user.lastName" name="lastName">
+            </mat-form-field> -->
+            <!-- Email -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input  matInput placeholder="Enter Here" [(ngModel)]="user.email" name="email">
+            </mat-form-field>
+            <!-- Phone -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Phone</mat-label>
+                <input  matInput placeholder="Enter Here" [(ngModel)]="user.phone" name="phone">
+            </mat-form-field>
+            </div>
+            <div class="container text-center">
+                <button type="submit" mat-flat-button>Register</button>
+                <button mat-raised-button style="margin-left: 20px; background-color: bisque;">Clear</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-4"></div>
+</div>
