@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.exam.services.UserService;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin("*")
 public class UserController {
 	
 	@Autowired
@@ -33,6 +35,8 @@ public class UserController {
 	@PostMapping("/")
 	public ResponseEntity<?> createUser(@RequestBody User user){
 		System.out.println(user);
+		
+		user.setProfile("default.png");
 		Set<UserRole> roles=new HashSet<>();
 		
 		Role role=new Role();
