@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-4"></div>
-    <div class="col" style="margin-top: 20px;">
+    <div class="col" style="margin-top: 5px;">
+        <mat-card style="background-color: white;">
         <div class="text-center">
             <!-- <img src="../../../assets/logo.png" alt=""> -->
             <img src="assets/logo1.png" alt="Logo" width="120" class="mb-3">
@@ -29,7 +30,7 @@
             <!-- Password -->
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Password</mat-label>
-                <input  matInput placeholder="Enter Here" [(ngModel)]="user.password" name="password">
+                <input type="password" matInput placeholder="Enter Here" [(ngModel)]="user.password" name="password">
             </mat-form-field>
             <!-- Confirm Password
             <mat-form-field class="full-width" appearance="outline">
@@ -49,9 +50,10 @@
             </div>
             <div class="container text-center">
                 <button type="submit" mat-flat-button>Register</button>
-                <button mat-raised-button style="margin-left: 20px; background-color: bisque;">Clear</button>
+                <button type="button" mat-raised-button style="margin-left: 20px; background-color: bisque;" (click)="clearForm()">Clear</button>
             </div>
         </form>
+    </mat-card>
     </div>
     <div class="col-4"></div>
 </div>

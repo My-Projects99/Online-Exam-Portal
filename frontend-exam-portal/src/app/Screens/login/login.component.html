@@ -1,1 +1,39 @@
-<h4>Welcom to login</h4>
+<div class="row">
+    <div class="col-4"></div>
+    
+    <div class="col mt20">
+        <mat-card style="background-color: white;">
+        <div class="text-center">
+            <img src="assets/logo1.png" alt="Logo" width="120" class="mb-3">
+        </div>
+        <h4 class="text-center">LOGIN</h4>
+
+        <form (ngSubmit)="formSubmit()">
+            <div class="container">
+                <!-- User Name -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>User Name</mat-label>
+                <input  matInput placeholder="Enter Here" [(ngModel)]="userInfo.userName" name="userName">
+            </mat-form-field>
+            <!-- Password -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Enter Here" [(ngModel)]="userInfo.password" name="password">
+            </mat-form-field>
+
+            <div>
+                <div>
+                    Don't have an account ?<a routerLink="/signup">Register here</a>
+                </div>
+                <br />
+                <button type="submit" mat-flat-button>
+                    Login
+                </button>
+                <button type="button" mat-raised-button style="margin-left: 20px; background-color: bisque;" (click)="clearForm()">Clear</button>
+            </div>
+            </div>
+        </form>
+    </mat-card>
+    </div>
+    <div class="col-4"></div>
+</div>

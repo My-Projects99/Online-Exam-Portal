@@ -1,1 +1,22 @@
-<p>navbar works!</p>
+<mat-toolbar color="black">
+    <!-- <a mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"> -->
+    <a routerLink="/" aria-label="Example icon-button with menu icon">
+        <img src="../../../assets/logo1.png" alt="" width="50px" height="50px">
+    </a>
+    <span class="ml10">Exam-Portal</span>
+
+    <span class="example-spacer"></span>
+    <a mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>person</mat-icon>
+    </a>
+
+    <!-- <h6>Login</h6> -->
+    <a routerLink="login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>login</mat-icon>
+    </a>
+    <!-- <h6>LogOut</h6> -->
+    <a routerLink="login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>logout</mat-icon>     
+    </a>
+
+  </mat-toolbar>

@@ -8,22 +8,31 @@ import { UserService } from '../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2'
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router'; // ✅ add this import
+import {MatCardModule} from '@angular/material/card';// used to make form as a card
 
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [    
+    RouterModule,
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
 
-  constructor(private userService: UserService,private snackBar: MatSnackBar,private toastr: ToastrService) {}  // Inject service
+  constructor(private userService: UserService,
+    private snackBar: MatSnackBar,
+    private toastr: ToastrService,
+    private router: Router // ✅ injected here
+  ) {}  // Inject service
 
   public user={
     userName:"",
@@ -85,6 +94,7 @@ export class SignupComponent {
         console.log(data);
         Swal.fire('success','Registerd Successfully ','success')
         // alert("Success");
+        this.router.navigate(['/login']); // ✅ navigate to login
       },
       (error)=>{
         //error
@@ -99,4 +109,15 @@ export class SignupComponent {
   
   }
 
+  clearForm() {
+    this.user = {
+      userName: "",
+      firstName: "",
+      lastName: "",
+      password: "",
+      email: "",
+      phone: ""
+    };
+  }
+  
 }
