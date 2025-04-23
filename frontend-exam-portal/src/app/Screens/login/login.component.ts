@@ -36,11 +36,11 @@ export class LoginComponent {
   }
 
   formSubmit(){
-    if(this.userInfo.userName=='' || this.userInfo.userName==null){
+    if(this.userInfo.userName.trim()=='' || this.userInfo.userName==null){  //.trim() here used for when we input only space in the text area then it remove space and show it as a empty field.
       this.snackBar.open('Input Valid UserName !!', 'Close', {duration: 2000,verticalPosition:'top',horizontalPosition:'center'});
       return;
     }
-    else if(this.userInfo.password=='' || this.userInfo.password==null){
+    else if(this.userInfo.password.trim()=='' || this.userInfo.password==null){
       this.snackBar.open('Input Valid Password !!', 'Close', {duration: 2000,verticalPosition:'top',horizontalPosition:'center'});
       return;
     }
