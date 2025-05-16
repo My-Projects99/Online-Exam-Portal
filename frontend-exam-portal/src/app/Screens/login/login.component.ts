@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router'; // ✅ add this import
 import {MatCardModule} from '@angular/material/card';// used to make form as a card
+import { LoginService } from './../../services/login.service';
+import { error, log } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -27,16 +29,17 @@ export class LoginComponent {
 
   constructor(
     private snackBar: MatSnackBar,
-    private router: Router // ✅ injected here
+    private router: Router ,// ✅ injected here
+    private login:LoginService
   ){}
 
   public userInfo={
-    userName:'',
+    username:'',
     password:'',
   }
 
   formSubmit(){
-    if(this.userInfo.userName.trim()=='' || this.userInfo.userName==null){  //.trim() here used for when we input only space in the text area then it remove space and show it as a empty field.
+    if(this.userInfo.username.trim()=='' || this.userInfo.username==null){  //.trim() here used for when we input only space in the text area then it remove space and show it as a empty field.
       this.snackBar.open('Input Valid UserName !!', 'Close', {duration: 2000,verticalPosition:'top',horizontalPosition:'center'});
       return;
     }
@@ -46,6 +49,44 @@ export class LoginComponent {
     }
     else{
       console.log(this.userInfo)
+      //Request to server to generate token
+      this.login.generateToken(this.userInfo).subscribe(
+      (data:any) =>{
+        console.log('success');
+        console.log(data);
+        //token store in localStorage 
+        this.login.loginUser(data.token);
+
+        //get the login user Details 
+        this.login.getCurrentUser().subscribe(
+          (user:any)=>{
+            console.log(user)
+            //user save on localStorage 
+            this.login.setUser(user);
+
+            //Redirect if ADMIN :admin dashboard else normal user :normaluser dashboard
+            if(this.login.getUserRole()=="ADMIN"){
+              //Redirect to Admin page 
+              window.location.href='/admindash'
+              // this.login.loginStatusSubject.next(true);
+            }else if(this.login.getUserRole()=="STUDENT"){
+              //Redirect to Student page
+              window.location.href='/userdash'
+              // this.login.loginStatusSubject.next(true);
+            }else{
+              this.login.logout();
+            }
+          },
+          (error)=>{
+
+          }
+        )
+
+      },
+    (error) =>{
+      console.log("Error !");
+      console.log(error);
+    });
       alert("login success")
     }
     
@@ -53,7 +94,7 @@ export class LoginComponent {
 
   clearForm() {
     this.userInfo = {
-      userName: "",
+      username: "",
       password: ""   
     };
     // this.router.navigate(['/']); // ✅ navigate to login

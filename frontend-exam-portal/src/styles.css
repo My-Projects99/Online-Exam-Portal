@@ -37,3 +37,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mb10{
     margin-bottom: 10px;
 }
+.ml5{
+    margin-left: 5px;
+}
+
+.mr5{
+    margin-right: 5px;
+}
+
+.mt5{
+    margin-top: 5px;
+}
+
+.mb5{
+    margin-bottom: 5px;
+}

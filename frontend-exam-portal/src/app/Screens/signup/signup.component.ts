@@ -35,7 +35,7 @@ export class SignupComponent {
   ) {}  // Inject service
 
   public user={
-    userName:"",
+    username:"",
     firstName:"",
     lastName:"",
     password:"",
@@ -50,7 +50,7 @@ export class SignupComponent {
 
   formSubmit(){
     console.log(this.user);
-    if(this.user.userName==''||this.user.userName==null){
+    if(this.user.username==''||this.user.username==null){
       this.snackBar.open('User Name is Unique Required !!', 'Close', {duration: 2000,verticalPosition:'top',horizontalPosition:'center'});
       return
     }
@@ -99,7 +99,7 @@ export class SignupComponent {
       (error)=>{
         //error
         console.log(error);
-        Swal.fire('Error','Somthing went wrong !! User Already Register !! UserName should be Uniq','error')
+        Swal.fire('Error','Somthing went wrong !! User Already Register !! username should be Uniq','error')
         // alert("Somthing went wrong !!")
       }
     )
@@ -111,7 +111,7 @@ export class SignupComponent {
 
   clearForm() {
     this.user = {
-      userName: "",
+      username: "",
       firstName: "",
       lastName: "",
       password: "",

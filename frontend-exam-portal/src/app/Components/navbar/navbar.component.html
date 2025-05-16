@@ -5,17 +5,29 @@
     </a>
     <span class="ml10">Exam-Portal</span>
 
+    <button mat-button
+        matTooltip="Info about the action"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+        Action
+    </button>
+
     <span class="example-spacer"></span>
+    
+    <button *ngIf="isLoggedIn" mat-button
+        matTooltip="Info about the action"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+        {{login.getUser().username}}
+    </button>
     <a mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>person</mat-icon>
     </a>
 
     <!-- <h6>Login</h6> -->
-    <a routerLink="login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <a *ngIf="!isLoggedIn" routerLink="login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>login</mat-icon>
     </a>
     <!-- <h6>LogOut</h6> -->
-    <a routerLink="login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <a *ngIf="isLoggedIn" (click)="logout()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>logout</mat-icon>     
     </a>
 
