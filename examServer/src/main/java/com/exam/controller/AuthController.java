@@ -2,8 +2,12 @@ package com.exam.controller;
 
 import com.exam.pojo.JwtRequest;
 import com.exam.pojo.JwtResponse;
+import com.exam.pojo.User;
 import com.exam.config.JwtUtil;
 import com.exam.services.UserDetailServiceImpl;
+
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +46,11 @@ public class AuthController {
         System.out.println(token);
         
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+    // return the details of current user 
+    @GetMapping("/current-user")
+    public User currentUser(Principal principal) {
+    	return (User)this.userDetailService.loadUserByUsername(principal.getName());
     }
 }
 //@RestController
