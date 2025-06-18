@@ -75,19 +75,22 @@ export class LoginComponent {
               // this.login.loginStatusSubject.next(true);
             }else{
               this.login.logout();
+              
             }
           },
           (error)=>{
-
+            console.log(error);
           }
         )
 
       },
     (error) =>{
       console.log("Error !");
-      console.log(error);
+      console.log("rrrrrr",error);
+      this.snackBar.open('Invalid User Detail pls Register first !!', 'Close', {duration: 3000,verticalPosition:'top',horizontalPosition:'center'});
+      // alert("Invalid User Detail pls Register first")
     });
-      alert("login success")
+      // alert("login success")
     }
     
   }

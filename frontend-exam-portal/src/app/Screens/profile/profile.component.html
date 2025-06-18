@@ -1,5 +1,46 @@
 <mat-card>
- <p>Your profileprofile works!</p>
+ <h3 style="text-align: center;">Welcome To Your Profile</h3>
+ <mat-card-content>
+    <div class="bootstrap-wrapper">
+        <div class="container">
+            <div class="container text-center">
+                <img src="assets/default.png" alt="" class="profile-image">
+            </div>
+            <!-- <h2 class="mt10 text-center">Deependra Sharma</h2> -->
+             <h2 class="mt10 text-center">{{ user?.firstName }} {{ user?.lastName }}</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10 " >
+                    <!-- table detail -->
+                     <table class="table text-center"> 
+                        <tr>
+                            <td>Username</td>
+                            <td>{{ user?.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>Userid</td>
+                            <td>Exam{{ user?.id }}</td>
+                        </tr>
+                        <!--<tr *ngIf="user?.phone"></tr> agr phone null hua to ye automatically is row ko show nhi krega -->
+                        <tr>
+                            <td>Phone No</td>
+                            <td>{{ user?.phone }}</td>
+                        </tr>
+                        <tr>
+                            <td>Role</td>
+                            <td>{{ user?.authorities?.[0]?.authority }}</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>{{user?.enabled?"Active":"InActive"}}</td>
+                        </tr>
+                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ </mat-card-content>
+    <mat-card-actions class="justify-content-center">
+        <button mat-raised-button color="primary">UPDATE</button>
+        <button mat-raised-button >SHARE</button>
+    </mat-card-actions>
 </mat-card>
-
-
